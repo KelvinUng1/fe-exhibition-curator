@@ -1,10 +1,16 @@
 import React from 'react';
+import ArtworkList from './ArtworkList';
 
-const Exhibition = () => {
+const Exhibition = ({ exhibitionArtworks, onRemoveFromExhibition }) => {
   return (
-    <div>
-      <h2>Exhibition</h2>
-      <p>Explore your current exhibition.</p>
+    <div className="exhibition p-6">
+      <h1 className='text-4xl font-bold text-center mb-6'>My Exhibition</h1>
+      <ArtworkList
+        artworks={exhibitionArtworks}
+        onRemoveFromExhibition={onRemoveFromExhibition}
+        exhibitionArtworks={exhibitionArtworks}
+        isExhibitionPage={true}  /* on exhib page */
+      />
     </div>
   );
 };

@@ -1,23 +1,63 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import BrowseArt from './components/BrowseArt';
+import Exhibition from './components/Exhibition';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './components/Home';
-import Exhibition from './components/Exhibition';
-import BrowseArt from './components/BrowseArt';
-import ErrorMessage from './components/ErrorMessage';
+import ArtworkDetail from './components/ArtworkDetail';
+import artworks from './exampleData';  
 
 const App = () => {
+  const [exhibitionArtworks, setExhibitionArtworks] = useState(() => {
+    const savedExhibition = localStorage.getItem('exhibitionArtworks');
+    return savedExhibition ? JSON.parse(savedExhibition) : [];
+  });
+
+  const [searchKeyword, setSearchKeyword] = useState('');  
+
+  const addToExhibition = (artwork) => {
+    if (!exhibitionArtworks.some(item => item.id === artwork.id)) {
+      setExhibitionArtworks(prev => [...prev, artwork]);
+    }
+  };
+
+  const removeFromExhibition = (artwork) => {
+    setExhibitionArtworks(prev => prev.filter(item => item.id !== artwork.id));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('exhibitionArtworks', JSON.stringify(exhibitionArtworks));
+  }, [exhibitionArtworks]);
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+  };
+
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/exhibition" element={<Exhibition />} />
-        <Route path="/browse" element={<BrowseArt />} />
-        <Route path="*" element={<ErrorMessage />} />
-      </Routes>
-      <Footer />
+      <div className="App">
+        <Header onSearch={handleSearch} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home artworks={artworks} onAddToExhibition={addToExhibition} exhibitionArtworks={exhibitionArtworks} />}
+          />
+          <Route
+            path="/browse-art"
+            element={<BrowseArt artworks={artworks} searchKeyword={searchKeyword} onAddToExhibition={addToExhibition} exhibitionArtworks={exhibitionArtworks} />}
+          />
+          <Route
+            path="/exhibition"
+            element={<Exhibition exhibitionArtworks={exhibitionArtworks} onRemoveFromExhibition={removeFromExhibition} />}
+          />
+          <Route
+            path="/artwork/:id"
+            element={<ArtworkDetail artworks={artworks} />}
+          />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 };

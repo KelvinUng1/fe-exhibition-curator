@@ -1,11 +1,9 @@
 import React from 'react';
 
-const ErrorMessage = () => {
-  return (
-    <div>
-      <p>An error occurred. Please try again later.</p>
-    </div>
-  );
-};
+const ErrorMessage = ({ message }) => (
+  <div className="error-message">
+    <p>{message}</p>
+  </div>
+);
 
 export default ErrorMessage;
