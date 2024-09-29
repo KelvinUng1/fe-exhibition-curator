@@ -158,13 +158,13 @@ const ArtworkDetail = () => {
                 <span>{infoSubSection === "catalogue" ? "▲" : "▼"}</span>
               </button>
               {infoSubSection === "catalogue" && (
-                <div
-                  className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2"
-                  dangerouslySetInnerHTML={renderCatalogueEntry()}
-                />
-              )}
-            </div>
-          )}
+                 <div
+                 className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2"
+                 dangerouslySetInnerHTML={renderCatalogueEntry()} 
+               />
+             )}
+           </div>
+         )}
 
           {/* artwork location - just hardcode for now. */}
           <div className="bg-white p-4 rounded-lg shadow-md mt-4">
