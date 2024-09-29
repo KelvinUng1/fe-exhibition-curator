@@ -62,6 +62,13 @@ const ArtworkDetail = () => {
     return { __html: sanitizedDescription };
   };
 
+  const renderCatalogueEntry = () => {
+    const catalogueEntry =
+      artwork.catalogue_entry || "No catalogue entry available";
+    const sanitizedCatalogueEntry = DOMPurify.sanitize(catalogueEntry);
+    return { __html: sanitizedCatalogueEntry };
+  };
+
   return (
     <div className="container mx-auto p-6">
       {/* back button */}
@@ -151,11 +158,10 @@ const ArtworkDetail = () => {
                 <span>{infoSubSection === "catalogue" ? "▲" : "▼"}</span>
               </button>
               {infoSubSection === "catalogue" && (
-                <div className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2">
-                  <p>
-                    {artwork.catalogue_entry || "No catalogue entry available"}
-                  </p>
-                </div>
+                <div
+                  className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2"
+                  dangerouslySetInnerHTML={renderCatalogueEntry()}
+                />
               )}
             </div>
           )}
@@ -173,4 +179,3 @@ const ArtworkDetail = () => {
 };
 
 export default ArtworkDetail;
-
