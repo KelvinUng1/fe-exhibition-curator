@@ -1,18 +1,54 @@
-import React from 'react';
-import ArtworkList from './ArtworkList';
-import LoadingSpinner from './LoadingSpinner';
-import ErrorMessage from './ErrorMessage';
+import React, { useState, useEffect } from "react";
+import ArtworkList from "./ArtworkList";
+import LoadingSpinner from "./LoadingSpinner";
+import ErrorMessage from "./ErrorMessage";
 
-const BrowseArt = ({ artworks, loading, error, onAddToExhibition, exhibitionArtworks, searchKeyword }) => {
-  
+const BrowseArt = ({
+  onAddToExhibition,
+  exhibitionArtworks,
+  searchKeyword,
+}) => {
+  const [artworks, setArtworks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchArtworks = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/artworks/browse"
+        );
+        const data = await response.json();
+
+        const combinedArtworks = [
+          ...data.artInstituteChicago.map((artwork) => ({
+            ...artwork,
+            source: "aic",
+          })),
+          ...data.clevelandMuseumArt.map((artwork) => ({
+            ...artwork,
+            source: "cma",
+          })),
+        ];
+
+        setArtworks(combinedArtworks);
+      } catch (error) {
+        setError("Failed to load artworks");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtworks();
+  }, []);
+
   const filteredArtworks = searchKeyword
-    ? artworks.filter(artwork =>
-        artwork.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-        artwork.artist.toLowerCase().includes(searchKeyword.toLowerCase())
+    ? artworks.filter(
+        (artwork) =>
+          artwork.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          artwork.artist.toLowerCase().includes(searchKeyword.toLowerCase())
       )
     : artworks;
-
-  const totalResults = filteredArtworks.length; 
 
   return (
     <div className="browse-art p-6">
@@ -21,18 +57,11 @@ const BrowseArt = ({ artworks, loading, error, onAddToExhibition, exhibitionArtw
       {loading && <LoadingSpinner />}
       {error && <ErrorMessage message={error} />}
 
-      
-      {searchKeyword && (
-        <div className="text-gray-700 text-lg mb-4">
-          Showing {Math.min(filteredArtworks.length, 20)} of {totalResults} results for "{searchKeyword}"
-        </div>
-      )}
-
       <ArtworkList
         artworks={filteredArtworks}
         onAddToExhibition={onAddToExhibition}
         exhibitionArtworks={exhibitionArtworks}
-        isExhibitionPage={false}  // not exhib page
+        isExhibitionPage={false} //not exhib page
       />
     </div>
   );
