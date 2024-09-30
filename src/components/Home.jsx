@@ -8,12 +8,12 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
   const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000/api/artworks";
   useEffect(() => {
     const fetchFeaturedArtworks = async () => {
       try {
         const response = await axios.get(
-          "https://be-exhibition-curator.onrender.com/api/artworks/featured"
+          `${BASE_URL}/featured`
         );
         // Combine cma + aic
         const combinedArtworks = [

@@ -16,13 +16,14 @@ const BrowseArt = ({ onAddToExhibition, exhibitionArtworks }) => {
   const [totalPages, setTotalPages] = useState(10);
 
   const navigate = useNavigate();
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000/api/artworks";
 
   useEffect(() => {
     const fetchArtworks = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://be-exhibition-curator.onrender.com/api/artworks/browse?page=${page}&limit=${limit}&search=${searchKeyword}`
+          `${BASE_URL}/browse?page=${page}&limit=${limit}&search=${searchKeyword}`
         );
         const data = await response.json();
 
