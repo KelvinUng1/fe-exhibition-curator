@@ -74,7 +74,7 @@ const ArtworkDetail = () => {
       {/* back button */}
       <button
         onClick={() => navigate(-1)}
-        className="mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="mb-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         ← Back
       </button>
@@ -158,13 +158,13 @@ const ArtworkDetail = () => {
                 <span>{infoSubSection === "catalogue" ? "▲" : "▼"}</span>
               </button>
               {infoSubSection === "catalogue" && (
-                 <div
-                 className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2"
-                 dangerouslySetInnerHTML={renderCatalogueEntry()} 
-               />
-             )}
-           </div>
-         )}
+                <div
+                  className="p-4 bg-white border-l-4 border-blue-300 rounded-lg shadow-inner mt-2"
+                  dangerouslySetInnerHTML={renderCatalogueEntry()}
+                />
+              )}
+            </div>
+          )}
 
           {/* artwork location - just hardcode for now. */}
           <div className="bg-white p-4 rounded-lg shadow-md mt-4">

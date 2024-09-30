@@ -15,7 +15,7 @@ const ArtworkCard = ({
       {/* image section */}
       <img
         src={artwork.image_url}
-        alt={artwork.title}
+        alt=""
         className="w-full h-60 object-contain"
       />
 
@@ -26,11 +26,12 @@ const ArtworkCard = ({
             {artwork.title}
             <Link
               to={`/artwork/${artwork.source}/${artwork.id}`}
-              className="text-blue-500"
+              className="text-blue-600"
             >
+              <span className="sr-only">More info about {artwork.title}</span>
               <FontAwesomeIcon
                 icon={faInfoCircle}
-                className="text-blue-500 cursor-pointer ml-2"
+                className="text-blue-600 cursor-pointer ml-2"
               />
             </Link>
           </div>
@@ -54,7 +55,7 @@ const ArtworkCard = ({
             ) : (
               <button
                 onClick={() => onAddToExhibition(artwork)}
-                className="w-full bg-blue-500 hover:bg-blue-700 text-[12px] text-white py-2 px-2 rounded"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-[12px] text-white py-2 px-2 rounded"
               >
                 Add to Exhibition
               </button>
@@ -62,7 +63,7 @@ const ArtworkCard = ({
           ) : (
             <button
               onClick={() => onRemoveFromExhibition(artwork)}
-              className="w-full bg-red-500 hover:bg-red-700 text-[12px] text-white py-2 px-2 rounded"
+              className="w-full bg-red-600 hover:bg-red-700 text-[12px] text-white py-2 px-2 rounded"
             >
               Remove from Exhibition
             </button>

@@ -19,8 +19,8 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleClear = () => {
-    setKeyword(""); 
-    onSearch(""); 
+    setKeyword("");
+    onSearch("");
   };
 
   return (
@@ -33,8 +33,8 @@ const SearchBar = ({ onSearch }) => {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search for artworks..."
-        className="py-2 pl-4 pr-10 rounded-md border border-gray-300 w-full"
-        style={{ width: "250px" }}
+        className="py-2 pl-4 pr-12 rounded-md border border-gray-300 w-full"
+        aria-label="Search for artworks"
       />
 
       {keyword && (
@@ -42,14 +42,16 @@ const SearchBar = ({ onSearch }) => {
           type="button"
           onClick={handleClear}
           className="absolute right-10 top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none"
+          aria-label="Clear search"
         >
           <FontAwesomeIcon icon={faTimes} />
         </button>
       )}
-
+      
       <button
         type="submit"
         className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+        aria-label="Search"
       >
         <FontAwesomeIcon icon={faSearch} size="lg" />
       </button>

@@ -49,7 +49,7 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
             </h1>
             <Link
               to="/browse-art"
-              className="bg-blue-400 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-500 transition mt-10 inline-block"
+              className="bg-blue-600 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-700 transition mt-10 inline-block"
             >
               Browse Art
             </Link>
@@ -73,7 +73,7 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
               >
                 <img
                   src={artwork.image_url}
-                  alt={artwork.title}
+                  alt=""
                   className="w-full h-60 object-contain"
                 />
                 <div className="p-4">
@@ -90,7 +90,7 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
         <div className="text-center mt-6">
           <Link
             to="/browse-art"
-            className="text-blue-500 hover:underline text-lg"
+            className="text-blue-600 hover:underline text-lg"
           >
             View more artworks
           </Link>
@@ -106,7 +106,7 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
         </p>
         <Link
           to="/browse-art"
-          className="bg-blue-400 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-500 transition"
+          className="bg-blue-600 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-700 transition"
         >
           Start
         </Link>

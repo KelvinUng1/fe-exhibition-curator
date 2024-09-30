@@ -14,7 +14,7 @@ const App = () => {
     return savedExhibition ? JSON.parse(savedExhibition) : [];
   });
 
-  const [searchKeyword, setSearchKeyword] = useState(""); //  search -  NEED TO UPDATE SEARCH LOGIC
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   const addToExhibition = (artwork) => {
     if (!exhibitionArtworks.some((item) => item.id === artwork.id)) {
@@ -79,7 +79,7 @@ const App = () => {
             <Route path="/artwork/:source/:id" element={<ArtworkDetail />} />
           </Routes>
         </div>
-        <Footer /> {/*keep footer at bottom*/}
+        <Footer />
       </div>
     </Router>
   );

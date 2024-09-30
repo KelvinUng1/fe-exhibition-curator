@@ -72,7 +72,7 @@ const BrowseArt = ({ onAddToExhibition, exhibitionArtworks }) => {
           key={i}
           onClick={() => handlePageChange(i)}
           className={`px-3 py-1 mx-1 ${
-            i === page ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
+            i === page ? "bg-blue-600 text-white" : "bg-gray-200 text-black"
           } rounded`}
         >
           {i}
@@ -86,6 +86,12 @@ const BrowseArt = ({ onAddToExhibition, exhibitionArtworks }) => {
   return (
     <div className="browse-art p-6">
       <h1 className="text-4xl font-bold text-center mb-6">Browse Art</h1>
+
+      {searchKeyword && (
+        <p className="text-xl text-center mb-4">
+          Results for <strong>"{searchKeyword}"</strong>
+        </p>
+      )}
 
       {loading && <LoadingSpinner />}
       {error && <ErrorMessage message={error} />}
