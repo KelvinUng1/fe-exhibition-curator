@@ -17,14 +17,13 @@ const ArtworkDetail = () => {
   //sub sections
   const [infoSubSection, setInfoSubSection] = useState(null);
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000/api/artworks";
   // fetch
   useEffect(() => {
     const fetchArtworkDetails = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${BASE_URL}/${source}/${id}`
+          `https://be-exhibition-curator.onrender.com/api/artworks/${source}/${id}`
         );
         const data = await response.json();
         setArtwork(data);
