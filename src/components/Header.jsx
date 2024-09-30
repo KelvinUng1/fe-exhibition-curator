@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
-import logo from '../assets/src/assets/image-removebg-preview.png';
-
 
 const Header = ({ onSearch }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +31,7 @@ const Header = ({ onSearch }) => {
 
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <img
-            src= {logo}
+            src="/image-removebg-preview.png"
             alt="Exhibition Curator Logo"
             className="h-16 w-auto"
           />
