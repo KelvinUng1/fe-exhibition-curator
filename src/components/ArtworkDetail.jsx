@@ -23,7 +23,7 @@ const ArtworkDetail = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/artworks/${source}/${id}`
+          `https://be-exhibition-curator.onrender.com/api/artworks/${source}/${id}`
         );
         const data = await response.json();
         setArtwork(data);

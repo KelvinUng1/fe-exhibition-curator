@@ -13,7 +13,7 @@ const Home = ({ onAddToExhibition, exhibitionArtworks }) => {
     const fetchFeaturedArtworks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/artworks/featured"
+          "https://be-exhibition-curator.onrender.com/api/artworks/featured"
         );
         // Combine cma + aic
         const combinedArtworks = [

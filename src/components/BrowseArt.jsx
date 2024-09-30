@@ -22,7 +22,7 @@ const BrowseArt = ({ onAddToExhibition, exhibitionArtworks }) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/artworks/browse?page=${page}&limit=${limit}&search=${searchKeyword}`
+          `https://be-exhibition-curator.onrender.com/api/artworks/browse?page=${page}&limit=${limit}&search=${searchKeyword}`
         );
         const data = await response.json();
 
