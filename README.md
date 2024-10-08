@@ -5,7 +5,7 @@
 
 This project is built with **React**, **Vite**, and **Tailwind CSS**, and deployed on **Netlify**.
 
-- **[Live Demo](https://66faba48718d9500080453a8--exhibition-curator-ku.netlify.app/)**
+- **[Live Demo](https://exhibition-curator-ku.netlify.app/)**
 
 ---
 
