@@ -23,7 +23,7 @@ This project is built with **React**, **Vite**, and **Tailwind CSS**, and deploy
 
 ### Minimum Requirements
 
-- **Node.js**: Version 14.0 or above
+- **Node.js**: Version 20.8 or above
 
 ---
 
@@ -51,10 +51,4 @@ This project is built with **React**, **Vite**, and **Tailwind CSS**, and deploy
     Tailwind CSS: https://tailwindcss.com/<br>
     DOMPurify: https://github.com/cure53/DOMPurify<br>
     
----
-
-### Minimum Requirements
-
-- **Node.js**: Version 14.0 or above
-
 ---
